@@ -15,11 +15,13 @@ module ActiveAdminAddons
 
     def initial_collection_to_select_options
       initial_options = [[nil]] # add blank option
-      selected = selected_item
+      selected = selected_collection
 
-      if selected
-        selected_option = item_to_select_option(selected)
-        initial_options << [selected_option[:text], selected_option[:id]]
+      if selected_collection.any?
+        selected_collection.each do |item|
+          selected_option = item_to_select_option(item)
+          initial_options << [selected_option[:text], selected_option[:id]]
+        end
       end
 
       initial_options
@@ -56,11 +58,12 @@ module ActiveAdminAddons
     end
 
     def selected_collection
+      query = multiple? ? input_values : input_value
       @selected_collection ||= begin
         if active_record_relation?(collection)
-          collection.model.where(id: input_value)
+          collection.model.where(id: query)
         else
-          method_model.where(id: input_value)
+          method_model.where(id: query)
         end
       end
     end

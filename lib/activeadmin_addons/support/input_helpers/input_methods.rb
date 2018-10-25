@@ -14,6 +14,10 @@ module ActiveAdminAddons
       @object
     end
 
+    def multiple?
+      valid_options[:input_html].present? && valid_options[:input_html][:multiple].present?
+    end
+
     def object_class
       valid_object.class
     end
