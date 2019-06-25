@@ -2,7 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+### 1.7.1
+
+##### Fixed
+* `toggle_bool_column` fails working with decorated objects.
+
+### 1.7.0
 
 ##### Added
 * Nested select input allows to work with non virtual attributes.
