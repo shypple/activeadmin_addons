@@ -3,7 +3,7 @@ class ActiveAdmin::Views::Pages::Base
 
   def build(*args)
     original_build(args)
-    body = find_by_tag("body").first
+    body = get_elements_by_tag_name("body").first
     body.set_attribute "data-default-select", ActiveadminAddons.default_select
   end
 end
